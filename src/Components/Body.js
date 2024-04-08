@@ -14,11 +14,15 @@ const Body = () => {
             path: "/browse",
             element: <Browse />
         }
-    ])
+    ]);
+
     return (
+
         <div>
             <RouterProvider router={appBrowser} />
         </div>
     )
 }
+
+
 export default Body;

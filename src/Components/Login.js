@@ -1,14 +1,18 @@
 import Header from "./Header"
 import { useRef, useState } from "react"
 import { checkValidatingForm } from "../utils/checkValidatingForm"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase'
+import { useDispatch } from "react-redux"
+import { addUser } from "../utils/userSlice";
+import { User_Avatar } from "../utils/constants";
 
 
 const Login = () => {
 
     const [SignUp, SetSignUp] = useState(true)
     const [errorMessage, setMessage] = useState(null);
+    const dispatch = useDispatch()
 
     const name = useRef(null);
     const email = useRef(null);
@@ -24,11 +28,23 @@ const Login = () => {
         if (errorInfo) return;
 
         if (!SignUp) {
+
+
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
                     console.log(user)
+                    updateProfile(user, {
+                        displayName: name.current.value, photoURL: User_Avatar
+                    }).then(() => {
+                        const { uid, email, displayName, photoURL } = auth.currentUser;
+                        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
+
+                    }).catch((error) => {
+                        errorMessage(error.message)
+                    });
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -43,7 +59,8 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user)
+                    //console.log(user)
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
