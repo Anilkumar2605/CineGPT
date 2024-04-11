@@ -10,13 +10,13 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
 
     //Removed for security purposes
-    apiKey: "", 
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
-    measurementId: ""
+    apiKey: "AIzaSyA9g9CBvPIyv7uULIPeULCIhahW_FU37GE",
+    authDomain: "cinegpt-be54e.firebaseapp.com",
+    projectId: "cinegpt-be54e",
+    storageBucket: "cinegpt-be54e.appspot.com",
+    messagingSenderId: "72841579327",
+    appId: "1:72841579327:web:26474ff1d79a5225ab618a",
+    measurementId: "G-21CCG3QM7T"
 };
 
 // Initialize Firebase
