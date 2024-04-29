@@ -20,12 +20,14 @@ const Browse = () => {
     return (
         <div>
             <Header />
-            {showGptsearch ? <GptsearchPage /> :
+            {showGptsearch ? (
+                <GptsearchPage />
+            ) : (
                 <>
                     <MainContainer />
                     <SecondaryContainer />
                 </>
-            }
+            )}
 
         </div>
     )

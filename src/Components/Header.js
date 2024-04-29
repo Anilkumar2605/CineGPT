@@ -54,44 +54,42 @@ const Header = () => {
     const gptLangOption = useSelector(store => store.gpt.showGptsearch);
 
     return (
-        <div className="absolute bg-gradient-to-b from-black z-10">
-            <div className="absolute w-screen px-2 bg-gradient-to-b from-black z-10 flex justify-between">
-                <img src={LOGO} className="w-44" alt="logo" />
+        <div className="absolute z-10 w-screen px-4 py-2 md:px-0 md: bg-gradient-to-b from-black md:pt-[0%] flex flex-col space-y-[-4%] md:space-y-0 md:flex-row justify-between">
+            <img src={LOGO} className="w-44 mx-auto md:mx-0" alt="logo" />
 
-                {user && (
+            {user && (
 
-                    <div className="flex p-2">
+                <div className="flex p-2 justify-between">
 
-                        {
-                            gptLangOption &&
-                            <select className='bg-black text-white border border-red-700 m-4 px-1 rounded-md'
-                                onChange={handleLangChange}
-                            >
-                                {Supported_Language.map(lang => <option
-                                    key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
-                            </select>
-                        }
+                    {
+                        gptLangOption &&
+                        <select className='bg-black text-white border border-red-700 m-4 px-1 rounded-md'
+                            onChange={handleLangChange}
+                        >
+                            {Supported_Language.map(lang => <option
+                                key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+                        </select>
+                    }
 
 
-                        <button className='bg-black text-white border border-red-700 m-4 px-1 rounded-md '
-                            onClick={handleGptSearch}
-                        >{gptLangOption ? "Home Page" : "GPT Search"}</button>
+                    <button className='bg-black text-white border border-red-700 m-4 px-1 rounded-md '
+                        onClick={handleGptSearch}
+                    >{gptLangOption ? "Home" : "GPT Search"}</button>
 
-                        <button
-                            onClick={handleSignout}
-                            className="border border-red-700 bg-black text-white m-4 px-1 rounded-md" >
-                            Sign out
-                        </button>
+                    <button
+                        onClick={handleSignout}
+                        className="border border-red-700 bg-black text-white m-4 px-0 md:px-1 rounded-md col-span-3 whitespace-nowrap overflow-hidden overflow-ellipsis" >
+                        Sign out
+                    </button>
 
-                        <img
-                            className="m-3 p-1 w-12 h-12 rounded-full"
-                            src={user.photoURL}
-                            alt="icon"
-                        />
+                    <img
+                        className="m-3 p-1 w-12 h-12 rounded-full"
+                        src={user.photoURL}
+                        alt="icon"
+                    />
 
-                    </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     );
 }

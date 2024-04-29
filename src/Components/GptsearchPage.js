@@ -4,14 +4,17 @@ import SearchGpt from "./SearchGpt";
 const GptsearchPage = () => {
     return (
         <>
-            <div className="absolute -z-10">
-                <img src={BG_Image}
+            <div className="fixed -z-10">
+                <img className="h-screen object-cover w-screen" src={BG_Image}
                     alt="background" />
             </div>
-            <SearchGpt />
-            <GptMovieList />
+            <div className="">
+
+                <SearchGpt />
+                <GptMovieList />
+            </div>
         </>
 
-    )
-}
+    );
+};
 export default GptsearchPage;

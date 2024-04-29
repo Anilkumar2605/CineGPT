@@ -8,7 +8,7 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOTljYzBkZmQ0MDIxZTU0NDIyODM5YzQ2ZjgwZDI5ZCIsInN1YiI6IjY2MTM4MWIwYTZhNGMxMDE4NmJjZmYxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XBtsbif-KfydFj-o-p8aSlSDbja25IgGj2AFcROflg'
+        Authorization: 'Bearer ' + process.env.REACT_APP_TMDB_KEY,
     }
 };
 
@@ -19,3 +19,7 @@ export const Supported_Language = [
     { identifier: "hindi", name: "Hindi" },
     { identifier: "telugu", name: "Telugu" },
 ]
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY//Generate Key in openai website;
+
+

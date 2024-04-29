@@ -11,10 +11,13 @@ const MainContainer = () => {
     //console.log(mainmovie, "MainContainer");
     const { original_title, overview, id } = mainmovie;
     return (
-        < div >
-            <VideoBG movie_id={id} />
+
+        < div className='pt-[36%] md:pt-0 bg-black' >
             <VideoTitle title={original_title} overview={overview} />
+            <VideoBG movie_id={id} />
+
         </div >
+
     )
 }
 export default MainContainer;
